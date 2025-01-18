@@ -13,9 +13,7 @@ api_key = "43daef8559705998e9d146044f436dd7"
 
 
 #input city name
-city_name = input("Type the city you want to find it's weather: ")
-city_name = city_name.capitalize()
-
+city_name = "Berlin"
 #paste url with api variable
 url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}"
 
@@ -38,21 +36,7 @@ country = data['sys'] ['country']
 string = f'[{city_name} - WEATHER REQUEST REPORT]'
 
 #print name of city and it's coordinate
-print(string)
-print("""====================================================
-      
-      """)
-print(f""" 
-      The weather for the city '{name}', {country}
-      With longitude '{lon}' and latitude '{lat}' is  {weather},
-      The humidity is {humidity} above sea level of {sea_level}m """)
-      
-      
-      
-      
-      
-      
-      
+print(f" the weather for the city '{name}' with longitude '{lon}' and latitude '{lat}' is  {weather}" )
 '''exclude the hourly and minute results
 exclude = "hourly, minute"
 #set the url for weather excluding the hourly and minute reports and print it out
