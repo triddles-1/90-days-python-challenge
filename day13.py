@@ -1,4 +1,3 @@
-# create a script that fetches API from openweather
 # -*- coding: utf-8 -*-
 """
 Created on Sat Jan 18 04:12:22 2025
@@ -7,24 +6,53 @@ Created on Sat Jan 18 04:12:22 2025
 """
 
 import requests
+
+
 #assugn your api key
 api_key = "43daef8559705998e9d146044f436dd7"
+
+
 #input city name
-city_name = "Berlin"
+city_name = input("Type the city you want to find it's weather: ")
+city_name = city_name.capitalize()
+
 #paste url with api variable
 url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}"
+
+
 #print url and parse result iin json format
 print(url)
 req = requests.get(url)
 data = req.json()
 print(data)
+
+
 #assign name, longitude and latitde using your parsed json results 
 name = data['name']
 lon = data['coord'] ['lon']
 lat = data['coord'] ['lat']
-weather = data['weather'][0]['main']
+weather = data['weather'][0]['description']
+humidity = data['main'] ['humidity']
+sea_level = data['main'] ['sea_level']
+country = data['sys'] ['country']
+string = f'[{city_name} - WEATHER REQUEST REPORT]'
+
 #print name of city and it's coordinate
-print(f" the weather for the city '{name}' with longitude '{lon}' and latitude '{lat}' is  {weather}" )
+print(string)
+print("""====================================================
+      
+      """)
+print(f""" 
+      The weather for the city '{name}', {country}
+      With longitude '{lon}' and latitude '{lat}' is  {weather},
+      The humidity is {humidity} above sea level of {sea_level}m """)
+      
+      
+      
+      
+      
+      
+      
 '''exclude the hourly and minute results
 exclude = "hourly, minute"
 #set the url for weather excluding the hourly and minute reports and print it out
@@ -45,6 +73,9 @@ for i in data2['daily']:
     days.append(round(i['temp'] ['day'] -273.15))
     #let's do the niight
     night.append(round(i['temp'] ['night'] -273.15))
+    
+    #get weather condition and description
+    descr.append(i['weather'][0]['main'] + ": " + i['weathher'][0]['description'])
     
     
 print(days)
