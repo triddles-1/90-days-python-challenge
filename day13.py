@@ -10,7 +10,7 @@ import requests
 #assugn your api key
 api_key = "43daef8559705998e9d146044f436dd7"
 #input city name
-city_name = "Berlin"
+city_name = input(" What city do you want to know it's weather? ")
 #paste url with api variable
 url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}"
 #print url and parse result iin json format
@@ -25,6 +25,8 @@ lat = data['coord'] ['lat']
 weather = data['weather'][0]['main']
 #print name of city and it's coordinate
 print(f" the weather for the city '{name}' with longitude '{lon}' and latitude '{lat}' is  {weather}" )
+
+#for API CALL SUBSCRIBERS
 '''exclude the hourly and minute results
 exclude = "hourly, minute"
 #set the url for weather excluding the hourly and minute reports and print it out
