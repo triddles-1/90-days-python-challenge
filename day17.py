@@ -7,6 +7,7 @@ def fetch_webpage(host, path="/"):
     Args:
         host (str): The domain name (e.g., example.com).
         path (str): The URL path (default is "/").
+        
 
     Returns:
         str: The content of the webpage.
